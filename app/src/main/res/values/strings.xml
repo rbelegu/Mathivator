@@ -40,5 +40,6 @@
     <string name="zeit">Zeit(s): </string>
     <string name="lat">Lat: </string>
     <string name="lon">Lon: </string>
+    <string name="error_settings">Keine Operatoren gewählt.</string>
     <!-- Strings related to Settings -->
 </resources>

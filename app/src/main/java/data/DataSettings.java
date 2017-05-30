@@ -38,8 +38,10 @@ public class DataSettings {
 
     private static List<Integer> generateRecheneinheiten(String rechenEinheitenString){
         List<Integer> list = new ArrayList<>();
-        for(String s : rechenEinheitenString.split(",")){
-            list.add(Integer.parseInt(s));
+        if(rechenEinheitenString.length()>0) {
+            for (String s : rechenEinheitenString.split(",")) {
+                list.add(Integer.parseInt(s));
+            }
         }
         return list;
     }

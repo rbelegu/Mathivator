@@ -61,6 +61,13 @@ public class GameActivity extends AppCompatActivity {
             timeView = (TextView) findViewById(R.id.timeBox);
             exerciseView = (TextView) findViewById(R.id.exerciseBox);
             pointView = (TextView) findViewById(R.id.pointBox);
+            Log.d(LOG_TAG,"anzahl " + settings.getRechenOperatoren().size() );
+            if(settings.getRechenOperatoren().isEmpty()){
+                Toast.makeText(this, R.string.error_settings, Toast.LENGTH_LONG).show();
+
+                GlobalEvents.SETTINGS.goTo(this.solutionView);
+                return;
+            }
             game = new Game(settings);
             game.initializeGame();
             startTime = new Date().getTime();
