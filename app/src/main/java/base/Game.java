@@ -20,6 +20,7 @@ public class Game {
     }
 
     public void initializeGame(){
+        Log.d(LOG_TAG,"Initialize Game: ");
         exerciseList = new ArrayList<>();
         for(int i=0;i<12;i++){
             exerciseList.add(createExercice(settings.getRechenOperatoren(),settings.getZahlenRaum()));
@@ -52,11 +53,12 @@ public class Game {
     }
 
     private void createPlus(Exercise ex, int zahlenRaum){
-        int a = getRandomNumber(zahlenRaum);
-        int b = getRandomNumber(zahlenRaum);
+        int solution = getRandomNumber(zahlenRaum);
+        int a = getRandomNumber(solution);
+        int b = solution - a;
         ex.setFirst(a);
         ex.setSecond(b);
-        ex.setSolution(a+b);
+        ex.setSolution(solution);
     }
 
     private void createMinus(Exercise ex, int zahlenRaum){
@@ -75,11 +77,20 @@ public class Game {
     }
 
     private void createMal(Exercise ex, int zahlenRaum){
-        int a = getRandomNumber(zahlenRaum);
+        int solution = getRandomNumber(zahlenRaum);
+        int bsel = solution;
+        ArrayList<Integer> possible = new ArrayList<>();
         int b = getRandomNumber(zahlenRaum);
+        while(bsel>0){
+            if((solution%bsel) == 0){
+                possible.add(bsel);
+            }
+            bsel--;
+        }
+        int a = possible.get((int)Math.round((Math.random())*(possible.size()-1)));
         ex.setFirst(a);
-        ex.setSecond(b);
-        ex.setSolution(a*b);
+        ex.setSecond(solution/a);
+        ex.setSolution(solution);
     }
 
     private void createDivision(Exercise ex, int zahlenRaum){
@@ -100,7 +111,8 @@ public class Game {
 
     private int getOperator(List<Integer> operators){
         int count = operators.size();
-        int op =  (int)Math.round((Math.random())*count-1);
+        Log.d(LOG_TAG,"Anzahl operator: " +operators.size());
+        int op =  (int)Math.round((Math.random())*(count-1));
         return operators.get(op);
     }
     public List<Exercise> getExerciseList() {

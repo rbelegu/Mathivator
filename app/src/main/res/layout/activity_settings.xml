@@ -73,8 +73,8 @@
                    android:onClick="clickZahlenraum"/>
                <Button
                style="@style/floatButtonStyle"
-               android:id="@+id/zahlenraum4"
-               android:text="@string/hundert"
+                   android:id="@+id/zahlenraum4"
+                   android:text="@string/hundert"
                    android:onClick="clickZahlenraum"/>
                </LinearLayout>
                <LinearLayout

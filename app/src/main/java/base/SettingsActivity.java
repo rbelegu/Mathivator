@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,6 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void initialize(){
         settings = DataSettings.getSettings(this);
+        Log.d(LOG_TAG,"zahlenraum" + settings.getZahlenRaum());
         plus = (Button)this.findViewById(R.id.plus);
         minus = (Button)this.findViewById(R.id.minus);
         mal = (Button)this.findViewById(R.id.mal);
@@ -120,7 +122,9 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickZahlenraum(View v){
         Button b = (Button)v;
         clearZahlenraum();
-        fillZahlenraum(Integer.parseInt(((Button) v).getText().toString()));
+        String buttonText = ((Button) v).getText().toString();
+        Log.d(LOG_TAG,"Text " + buttonText);
+        fillZahlenraum(Integer.parseInt(buttonText));
     }
 
     public void clickSave(View v){
@@ -169,6 +173,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void fillZahlenraum(int zahlenraum){
+        settings.setZahlenRaum(zahlenraum);
         switch(zahlenraum){
             case 10: setActive(zehn);
                 zahlenraumPoints=1;
