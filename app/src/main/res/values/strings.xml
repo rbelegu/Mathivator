@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Mathivator</string>
+    <string name="play">Play</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="name">Name</string>
+    <string name="zahlenraum">Zahlenraum</string>
+    <string name="highscore">Highscore</string>
+    <string name="operatoren">Grundrechenarten</string>
+    <string name="save">speichern</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="mal">x</string>
+    <string name="durch">/</string>
+    <string name="zehn">10</string>
+    <string name="zwanzig">20</string>
+    <string name="fuenfzig">50</string>
+    <string name="hundert">100</string>
+    <string name="zweifuenfzig">250</string>
+    <string name="fuenfhundert">500</string>
+    <string name="tausend">1000</string>
+    <string name="settings">Einstellungen</string>
+    <string name="home">Home</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="ten">10</string>
+    <string name="eleven">11</string>
+    <string name="tverlve">12</string>
+    <string name="cero">0</string>
+    <string name="back">back</string>
+    <string name="go">go</string>
+    <string name="error_permission">Keine GPS berechtigung bitte vergeben</string>
+    <string name="punkte">Punkte: </string>
+    <string name="zeit">Zeit(s): </string>
+    <string name="lat">Lat: </string>
+    <string name="lon">Lon: </string>
+    <!-- Strings related to Settings -->
+</resources>
