@@ -36,18 +36,18 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
             TextView nameView = (TextView) rowView.findViewById(R.id.highscoreName);
             TextView pointView = (TextView) rowView.findViewById(R.id.highscorePoints);
             TextView timeView = (TextView) rowView.findViewById(R.id.highscoreTime);
-            TextView latView = (TextView) rowView.findViewById(R.id.highscoreLat);
-            TextView lonView = (TextView) rowView.findViewById(R.id.highscoreLon);
+            TextView cityView = (TextView) rowView.findViewById(R.id.highscoreCity);
+            //TextView lonView = (TextView) rowView.findViewById(R.id.highscoreLon);
             dateView.setText(Tool.dateToString(item.getDate()));
             nameView.setText(item.getName());
             String punkte = parent.getResources().getString(R.string.punkte);
             String zeit = parent.getResources().getString(R.string.zeit);
-            String lat = parent.getResources().getString(R.string.lat);
-            String lon = parent.getResources().getString(R.string.lon);
+            String ort = parent.getResources().getString(R.string.city);
+            //String lon = parent.getResources().getString(R.string.lon);
             pointView.setText(punkte + String.valueOf(item.getHighscore()));
             timeView.setText(zeit + String.valueOf(item.getTime()));
-            latView.setText(lat + String.valueOf(item.getLat()));
-            lonView.setText(lon + String.valueOf(item.getLon()));
+            cityView.setText(ort + String.valueOf(item.getCity()));
+            //lonView.setText(lon + String.valueOf(item.getLon()));
             return rowView;
         }
         return convertView;

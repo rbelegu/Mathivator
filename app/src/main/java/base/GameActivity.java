@@ -3,6 +3,8 @@ package base;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.content.ContextCompat;
@@ -20,9 +22,12 @@ import android.widget.Toast;
 
 import com.example.admin.mathivator.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 import business.Exercise;
 import business.Highscore;
 import business.Settings;
@@ -166,16 +171,16 @@ public class GameActivity extends AppCompatActivity {
         Long d = new Date().getTime();
         highscore.setTime((int)((d-startTime)/1000));
         highscore.setDate(new Date(startTime));
-        Location l = getLocation();
+        String l = getLocation();
         if(l!=null) {
-            highscore.setLat(l.getLatitude());
-            highscore.setLon(l.getLongitude());
+            highscore.setCity(l);
         }
         DataHighscore.insertHigscore(highscore,this);
 
     }
-
-    private Location getLocation(){
+/* Read the GPS location and return the City */
+    private String getLocation(){
+        String finalCity = null;
         LocationManager locationManager =(LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
         try {
             Location location = null;
@@ -184,12 +189,24 @@ public class GameActivity extends AppCompatActivity {
                     ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                             PackageManager.PERMISSION_GRANTED) {
                 location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                double lat = location.getLatitude();
+                double lng = location.getLongitude();
+                Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+                StringBuilder builder = new StringBuilder();
+                List<Address> address = geoCoder.getFromLocation(lat, lng, 1);
+                int maxLines = address.get(0).getMaxAddressLineIndex();
+                finalCity = address.get(0).getAddressLine(maxLines - 1); //Only the City with ZIP Code.
             }else {
                 Toast.makeText(this, R.string.error_permission, Toast.LENGTH_LONG).show();
             }
-            return location;
+
+            return finalCity;
         } catch (SecurityException e) {
             Log.e(LOG_TAG,"no gps alowed",e);
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
             return null;
         }
     }

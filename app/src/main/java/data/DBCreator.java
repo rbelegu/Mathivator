@@ -25,8 +25,8 @@ public class DBCreator extends SQLiteOpenHelper {
     public static final String TABELLEHIGHSCORE = "highscore";
     public static final String TIMEfELD = "gameTime";
     public static final String DATEFELD ="date";
-    public static final String LATFELD ="lat";
-    public static final String LONFELD ="lon";
+    public static final String CITYFELD ="city";
+    //public static final String LONFELD ="lon";
     public DBCreator(Context context) {
         super(context, DATENBANK_NAME, null, DATENBANK_VERSION);
         Log.d(LOG_TAG, "DBCreator hat die Datenbank " + getDatabaseName() + "erstellt");
@@ -35,7 +35,7 @@ public class DBCreator extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "Erstelle Datenbank");
         db.execSQL("CREATE TABLE if not exists `"+TABELLESETTINGS+"` ( `"+IDFELD+"` INTEGER, `"+RECHENEINHEITENFELD+"` TEXT, `"+MAXPOINTSFELD+"` INTEGER, `"+HIGHSCOREFELD+"` INTEGER, `"+NAMEFELD+"` TEXT, `"+ZAHLENRAUM+"` INTEGER, PRIMARY KEY(`id`) );");
-        db.execSQL("CREATE TABLE if not exists `"+TABELLEHIGHSCORE+"` ( `"+IDFELD+"` INTEGER PRIMARY KEY AUTOINCREMENT, `"+HIGHSCOREFELD+"` INTEGER, `"+TIMEfELD+"` INTEGER, `"+DATEFELD+"` text, `"+NAMEFELD+"` TEXT,`"+LATFELD+"` NUMERIC,`"+LONFELD+"` NUMERIC);");
+        db.execSQL("CREATE TABLE if not exists `"+TABELLEHIGHSCORE+"` ( `"+IDFELD+"` INTEGER PRIMARY KEY AUTOINCREMENT, `"+HIGHSCOREFELD+"` INTEGER, `"+TIMEfELD+"` INTEGER, `"+DATEFELD+"` text, `"+NAMEFELD+"` TEXT,`"+CITYFELD+"` STRING);");
 
         db.execSQL("INSERT INTO `"+TABELLESETTINGS+"` VALUES(1,'1,2,3,4',18,0,'',50)");
     }

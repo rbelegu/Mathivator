@@ -38,8 +38,6 @@
     <string name="error_permission">Keine GPS berechtigung bitte vergeben</string>
     <string name="punkte">Punkte: </string>
     <string name="zeit">Zeit(s): </string>
-    <string name="lat">Lat: </string>
-    <string name="lon">Lon: </string>
+    <string name="city">Ort: </string>
     <string name="error_settings">Keine Operatoren gewählt.</string>
-    <!-- Strings related to Settings -->
 </resources>

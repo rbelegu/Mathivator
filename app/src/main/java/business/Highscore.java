@@ -12,7 +12,7 @@ public class Highscore {
     private String name;
     private int time;
     private Date date;
-    private double lat;
+    private String city;
     private double lon;
 
     public int getId() {
@@ -55,12 +55,12 @@ public class Highscore {
         this.date = date;
     }
 
-    public double getLat() {
-        return lat;
+    public String getCity() {
+        return city;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setCity(String lat) {
+        this.city = lat;
     }
 
     public double getLon() {

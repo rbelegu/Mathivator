@@ -41,8 +41,8 @@ public class DataHighscore {
         highscore.setTime(cursor.getInt(cursor.getColumnIndex(DBCreator.TIMEfELD)));
         highscore.setHighscore(cursor.getInt(cursor.getColumnIndex(DBCreator.HIGHSCOREFELD)));
         highscore.setName(cursor.getString(cursor.getColumnIndex(DBCreator.NAMEFELD)));
-        highscore.setLat(cursor.getDouble(cursor.getColumnIndex(DBCreator.LATFELD)));
-        highscore.setLon(cursor.getDouble(cursor.getColumnIndex(DBCreator.LONFELD)));
+        highscore.setCity(cursor.getString(cursor.getColumnIndex(DBCreator.CITYFELD)));
+        //highscore.setLon(cursor.getDouble(cursor.getColumnIndex(DBCreator.LONFELD)));
         return highscore;
     }
 
@@ -65,8 +65,8 @@ public class DataHighscore {
         cv.put(DBCreator.HIGHSCOREFELD, highscore.getHighscore());
         cv.put(DBCreator.TIMEfELD, highscore.getTime());
         cv.put(DBCreator.DATEFELD,Tool.dateToString(highscore.getDate()));
-        cv.put(DBCreator.LATFELD,highscore.getLat());
-        cv.put(DBCreator.LONFELD,highscore.getLon());
+        cv.put(DBCreator.CITYFELD,highscore.getCity());
+        //cv.put(DBCreator.LONFELD,highscore.getLon());
         return cv;
     }
 }
