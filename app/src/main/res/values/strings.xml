@@ -31,8 +31,8 @@
     <string name="nine">9</string>
     <string name="ten">10</string>
     <string name="eleven">11</string>
-    <string name="tverlve">12</string>
-    <string name="cero">0</string>
+    <string name="twelve">12</string>
+    <string name="zero">0</string>
     <string name="back">back</string>
     <string name="go">go</string>
     <string name="error_permission">Keine GPS berechtigung bitte vergeben</string>

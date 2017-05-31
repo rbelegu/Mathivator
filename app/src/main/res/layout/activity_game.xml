@@ -29,14 +29,14 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textAlignment="viewStart"
-                android:text="@string/cero"/>
+                android:text="@string/zero"/>
             <TextView
                 android:id="@+id/pointBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textAlignment="viewEnd"
-                android:text="@string/cero"/>
+                android:text="@string/zero"/>
         </LinearLayout>
         <TextView
             android:id="@+id/exerciseBox"
@@ -128,7 +128,7 @@
             android:onClick="onBack" />
         <Button
             style="@style/calcButtons"
-            android:text="@string/cero"
+            android:text="@string/zero"
             android:onClick="setNumber"/>
         <Button
             style="@style/calcButtons"
