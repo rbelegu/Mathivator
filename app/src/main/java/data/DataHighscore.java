@@ -21,14 +21,12 @@ public class DataHighscore {
 
     public static List<Highscore> getHighscore(Context context){
         database = DBCreator.getInstance(context).getWritableDatabase();
-        Cursor cursor = database.query(DBCreator.TABELLEHIGHSCORE, null,null, null, null, null, DBCreator.HIGHSCOREFELD+","+DBCreator.DATEFELD);
+        Cursor cursor = database.query(DBCreator.TABELLEHIGHSCORE, null,null, null, null, null, DBCreator.HIGHSCOREFELD+" DESC,"+DBCreator.TIMEFELD+","+DBCreator.DATEFELD + " DESC");
         List<Highscore> highScoreList = new ArrayList<>();
         while (cursor.moveToNext()) {
             highScoreList.add(higscoreFromCursor(cursor));
         }
         Log.d(LOG_TAG,"Anzahl Highscores " + highScoreList.size());
-        cursor.close();
-        database.close();
         cursor.close();
         database.close();
         return highScoreList;

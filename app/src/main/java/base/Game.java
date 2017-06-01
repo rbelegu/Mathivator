@@ -25,14 +25,15 @@ public class Game {
         int length = settings.getRechenOperatoren().size();
         int typeLength = exerciceCount / length;
         int typeCount = 0;
-        int type = 0;
+        int typeNr = 0;
         for(int i=0;i<exerciceCount;i++){
             if(typeCount == typeLength){
-                type++;
+                typeNr++;
                 typeCount = 0;
             }
-            exerciseList.add(createExercice(settings.getRechenOperatoren().get(type),settings.getZahlenRaum()));
-
+            int operator = settings.getRechenOperatoren().get(typeNr);
+            exerciseList.add(createExercice(operator,settings.getZahlenRaum()));
+            typeCount++;
         }
     }
 
