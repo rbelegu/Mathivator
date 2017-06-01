@@ -12,14 +12,11 @@ import util.Tool;
 
 import com.example.admin.mathivator.R;
 /**
- 
+ Javadoc missing
  */
 
 public class HighscoreAdapter extends ArrayAdapter<Highscore> {
     private Context context;
-    private static class ViewHolder {
-        private TextView itemView;
-    }
 
     public HighscoreAdapter(Context context, int textViewResourceId, List<Highscore> items) {
         super(context, textViewResourceId, items);
@@ -37,17 +34,18 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
             TextView pointView = (TextView) rowView.findViewById(R.id.highscorePoints);
             TextView timeView = (TextView) rowView.findViewById(R.id.highscoreTime);
             TextView cityView = (TextView) rowView.findViewById(R.id.highscoreCity);
-            //TextView lonView = (TextView) rowView.findViewById(R.id.highscoreLon);
-            dateView.setText(Tool.dateToString(item.getDate()));
-            nameView.setText(item.getName());
-            String punkte = parent.getResources().getString(R.string.punkte);
-            String zeit = parent.getResources().getString(R.string.zeit);
-            String ort = parent.getResources().getString(R.string.city);
-            //String lon = parent.getResources().getString(R.string.lon);
-            pointView.setText(punkte + String.valueOf(item.getHighscore()));
-            timeView.setText(zeit + String.valueOf(item.getTime()));
-            cityView.setText(ort + String.valueOf(item.getCity()));
-            //lonView.setText(lon + String.valueOf(item.getLon()));
+            if(item != null && item.getDate() != null) {
+                dateView.setText(Tool.dateToString(item.getDate()));
+
+                nameView.setText(item.getName());
+                String punkte = parent.getResources().getString(R.string.punkte);
+                String zeit = parent.getResources().getString(R.string.zeit);
+                String ort = parent.getResources().getString(R.string.city);
+                pointView.setText(punkte + String.valueOf(item.getHighscore()));
+                timeView.setText(zeit + String.valueOf(item.getTime()));
+                cityView.setText(ort + String.valueOf(item.getCity()));
+            }
+
             return rowView;
         }
         return convertView;

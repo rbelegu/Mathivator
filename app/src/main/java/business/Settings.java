@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by admin on 22.05.2017.
+ * javadoc missing
  */
 
 public class Settings {

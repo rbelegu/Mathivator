@@ -14,7 +14,7 @@ public class Game {
     private List<Exercise> exerciseList;
     private Settings settings;
     private static final String LOG_TAG = Game.class.getSimpleName();
-
+    private static final int exerciceCount = 12;
     public Game(Settings settings){
         this.settings = settings;
     }
@@ -22,17 +22,23 @@ public class Game {
     public void initializeGame(){
         Log.d(LOG_TAG,"Initialize Game: ");
         exerciseList = new ArrayList<>();
-        for(int i=0;i<12;i++){
-            exerciseList.add(createExercice(settings.getRechenOperatoren(),settings.getZahlenRaum()));
+        int length = settings.getRechenOperatoren().size();
+        int typeLength = exerciceCount / length;
+        int typeCount = 0;
+        int type = 0;
+        for(int i=0;i<exerciceCount;i++){
+            if(typeCount == typeLength){
+                type++;
+                typeCount = 0;
+            }
+            exerciseList.add(createExercice(settings.getRechenOperatoren().get(type),settings.getZahlenRaum()));
 
         }
     }
 
-    private Exercise createExercice(List<Integer> operators, int zahlenRaum){
+    private Exercise createExercice(Integer operator, int zahlenRaum){
         Exercise ex = new Exercise();
-        ex.setOperator(getOperator(operators));
-        System.out.print("e0" + ex.getOperator());
-
+        ex.setOperator(operator);
         switch(ex.getOperator()){
             case 1:
                 createPlus(ex,zahlenRaum);
@@ -59,6 +65,7 @@ public class Game {
         ex.setFirst(a);
         ex.setSecond(b);
         ex.setSolution(solution);
+        ex.setPoints(settings.getMaximumPoints());
     }
 
     private void createMinus(Exercise ex, int zahlenRaum){
@@ -73,7 +80,7 @@ public class Game {
             ex.setSecond(a);
             ex.setSolution(b-a);
         }
-
+        ex.setPoints(settings.getMaximumPoints());
     }
 
     private void createMal(Exercise ex, int zahlenRaum){
@@ -91,6 +98,8 @@ public class Game {
         ex.setFirst(a);
         ex.setSecond(solution/a);
         ex.setSolution(solution);
+        ex.setPoints(2 * settings.getMaximumPoints());
+
     }
 
     private void createDivision(Exercise ex, int zahlenRaum){
@@ -107,14 +116,9 @@ public class Game {
         ex.setFirst(a);
         ex.setSecond(b);
         ex.setSolution(a/b);
+        ex.setPoints(2 * settings.getMaximumPoints());
     }
 
-    private int getOperator(List<Integer> operators){
-        int count = operators.size();
-        Log.d(LOG_TAG,"Anzahl operator: " +operators.size());
-        int op =  (int)Math.round((Math.random())*(count-1));
-        return operators.get(op);
-    }
     public List<Exercise> getExerciseList() {
         return exerciseList;
     }

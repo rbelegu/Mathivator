@@ -183,20 +183,18 @@ public class GameActivity extends AppCompatActivity {
         String finalCity = null;
         LocationManager locationManager =(LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
         try {
-            Location location = null;
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
                     PackageManager.PERMISSION_GRANTED &&
                     ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                             PackageManager.PERMISSION_GRANTED) {
-                location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
                 Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
-                StringBuilder builder = new StringBuilder();
                 List<Address> address = geoCoder.getFromLocation(lat, lng, 1);
                 int maxLines = address.get(0).getMaxAddressLineIndex();
-                finalCity = address.get(0).getAddressLine(maxLines - 1); //Only the City with ZIP Code.
+                finalCity = address.get(0).getAddressLine(maxLines - 1);
             }else {
                 Toast.makeText(this, R.string.error_permission, Toast.LENGTH_LONG).show();
             }
@@ -214,14 +212,11 @@ public class GameActivity extends AppCompatActivity {
     private void checkSolution(){
         if(!solutionText.isEmpty()) {
             Exercise ex = game.getExerciseList().get(currentExerciseIndex);
-
             if (ex.getSolution() == Integer.parseInt(solutionView.getText().toString())) {
-                ex.setCorrect(true);
-                currentPoints += settings.getMaximumPoints();
+                currentPoints += ex.getPoints();
                 historyList.get(currentExerciseIndex).setBackgroundColor(Color.GREEN);
                 pointView.setText(String.valueOf(currentPoints));
             } else {
-                ex.setCorrect(false);
                 historyList.get(currentExerciseIndex).setBackgroundColor(Color.RED);
             }
             currentExerciseIndex++;

@@ -1,5 +1,4 @@
 package base;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -11,15 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.admin.mathivator.R;
-
 import java.util.Iterator;
 import java.util.List;
-
 import business.Settings;
 import data.DataSettings;
 
+/**
+ * Java doc missing
+ * */
 public class SettingsActivity extends AppCompatActivity {
     private static final String LOG_TAG = AppCompatActivity.class.getSimpleName();
     private Button plus;
@@ -36,7 +35,6 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText name;
     private TextView highscore;
     private Settings settings;
-    private int operatorPoints;
     private int zahlenraumPoints;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,16 +118,16 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     public void clickZahlenraum(View v){
-        Button b = (Button)v;
+        Button button = (Button)v;
         clearZahlenraum();
-        String buttonText = ((Button) v).getText().toString();
+        String buttonText = button.getText().toString();
         Log.d(LOG_TAG,"Text " + buttonText);
         fillZahlenraum(Integer.parseInt(buttonText));
     }
 
     public void clickSave(View v){
         settings.setName(name.getText().toString());
-        settings.setMaximumPoints(operatorPoints*zahlenraumPoints);
+        settings.setMaximumPoints(zahlenraumPoints);
         DataSettings.saveSettings(settings,this);
     }
 
@@ -143,21 +141,16 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void fillRecheneinheiten(List<Integer> recheneinheiten) {
-        operatorPoints = 0;
         if (recheneinheiten.contains(1)) {
-            operatorPoints+=1;
             setActive(plus);
         }
         if (recheneinheiten.contains(2)) {
-            operatorPoints+=1;
             setActive(minus);
         }
         if (recheneinheiten.contains(3)) {
-            operatorPoints+=2;
             setActive(mal);
         }
         if (recheneinheiten.contains(4)) {
-            operatorPoints+=2;
             setActive(durch);
         }
     }

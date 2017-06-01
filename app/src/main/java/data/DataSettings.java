@@ -10,6 +10,7 @@ import java.util.List;
 import business.Settings;
 /**
  * Created by admin on 22.05.2017.
+ * javadoc missing
  */
 public class DataSettings {
     private static SQLiteDatabase database;
