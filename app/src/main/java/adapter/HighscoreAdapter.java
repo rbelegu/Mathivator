@@ -41,7 +41,7 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
             dateView.setText(Tool.dateToString(item.getDate()));
             nameView.setText(item.getName());
             String punkte = parent.getResources().getString(R.string.punkte);
-            String zeit = parent.getResources().getString(R.string.zeit);
+            String zeit = parent.getResources().getString(R.string.time);
             String ort = parent.getResources().getString(R.string.city);
             //String lon = parent.getResources().getString(R.string.lon);
             pointView.setText(punkte + String.valueOf(item.getHighscore()));

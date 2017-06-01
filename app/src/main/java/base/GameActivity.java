@@ -80,6 +80,7 @@ public class GameActivity extends AppCompatActivity {
             setExercise();
             createHistory();
             play=true;
+
         }catch(Exception e){
             Log.e(LOG_TAG,"Es ist ein Fehler in der Funktion initialize Klasse GameActivity aufgetreten" + e.toString() ,e);
         }
@@ -242,6 +243,29 @@ public class GameActivity extends AppCompatActivity {
         solutionView.setText("");
         solutionText="";
     }
+    /**
+     * Read the display size and change the size of the digit block buttons
+     */
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int btnSize = (size.y-100)/8;
+
+        ArrayList<View> allButtons;
+        allButtons = ((LinearLayout) findViewById(R.id.digitsBlock)).getTouchables();
+
+        for(View btn_temp : allButtons)
+        {
+            btn_temp.getLayoutParams().height = btnSize;
+            btn_temp.getLayoutParams().width = btnSize;
+            btn_temp.requestLayout();
+        }
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.globalmenu, menu);

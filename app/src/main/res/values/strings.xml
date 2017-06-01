@@ -37,7 +37,8 @@
     <string name="go">go</string>
     <string name="error_permission">Keine GPS berechtigung bitte vergeben</string>
     <string name="punkte">Punkte: </string>
-    <string name="zeit">Zeit(s): </string>
+    <string name="time">Zeit(s): </string>
     <string name="city">Ort: </string>
     <string name="error_settings">Keine Operatoren gewählt.</string>
+    <string name="title_big">Mathivator</string>
 </resources>
