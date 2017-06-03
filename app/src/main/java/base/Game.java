@@ -8,8 +8,9 @@ import business.Exercise;
 import business.Settings;
 
 /**
- * Created by admin on 26.05.2017.
- * blbla
+ * The GAME
+ *
+ * @author Rinon + D. Tsichlakis
  */
 
 public class Game {
