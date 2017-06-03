@@ -7,7 +7,7 @@ import android.util.Log;
 
 /**
  * Creates Database with Tables
- * and Database connection
+ * and Database connection.
  *
  * @author D. Tsichlakis + G. Ramizi
  */
@@ -45,7 +45,7 @@ public class DBCreator extends SQLiteOpenHelper {
     /**
      * Called when the database is created for the first time
      * Creates "settings" and "highscore" Table with attributes (incl. types)
-     * Sets some default values in the "setting" Table
+     * Set some default values in the "settings" Table
      *
      * @param db The database.
      */
