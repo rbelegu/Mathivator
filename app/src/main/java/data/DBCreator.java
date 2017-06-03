@@ -6,10 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * Creates Database and Database connection
+ * Creates Database with Tables
+ * and Database connection
  *
- * @author D. Tsichlakis
- *
+ * @author D. Tsichlakis + G. Ramizi
  */
 
 public class DBCreator extends SQLiteOpenHelper {
@@ -29,6 +29,14 @@ public class DBCreator extends SQLiteOpenHelper {
     public static final String DATEFELD ="date";
     public static final String CITYFELD ="city";
     //public static final String LONFELD ="lon";
+
+
+    /**
+     * This handles the creation of the DB and
+     * all database tables
+     *
+     * @param context The current context.
+     */
     public DBCreator(Context context) {
         super(context, DATENBANK_NAME, null, DATENBANK_VERSION);
         Log.d(LOG_TAG, "DBCreator hat die Datenbank " + getDatabaseName() + "erstellt");
@@ -36,7 +44,10 @@ public class DBCreator extends SQLiteOpenHelper {
 
     /**
      * Called when the database is created for the first time
-     * Creates Settings Table and Highscore Table with attributes
+     * Creates "settings" and "highscore" Table with attributes (incl. types)
+     * Sets some default values in the "setting" Table
+     *
+     * @param db The database.
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -51,6 +62,9 @@ public class DBCreator extends SQLiteOpenHelper {
     /**
      * Called when the database needs to be upgraded.
      *
+     * @param db The database.
+     * @param oldVersion The old database version.
+     * @param newVersion The new database version.
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -60,7 +74,8 @@ public class DBCreator extends SQLiteOpenHelper {
     /**
      * Creates and Return DB instance (Singelton Pattern)
      *
-     * @return
+     * @param context The current context.     *
+     * @return  DB instance
      */
     public static synchronized DBCreator getInstance(Context context){
         if(INSTANCE == null){
