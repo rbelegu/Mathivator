@@ -41,4 +41,5 @@
     <string name="city">Ort: </string>
     <string name="error_settings">Keine Operatoren gewählt.</string>
     <string name="title_big">Mathivator</string>
+    <string name="error_gpsnotfound">Kein GPS Signal gefunden.</string>
 </resources>
