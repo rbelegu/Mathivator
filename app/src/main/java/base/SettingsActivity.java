@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.admin.mathivator.R;
 import java.util.Iterator;
 import java.util.List;
 import business.Settings;
 import data.DataSettings;
+import global.GlobalEvents;
 
 /**
  * Java doc missing
@@ -78,6 +81,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickRechenoperation(View view){
         Button b = (Button) view;
         addRechenoperation(b.getId());
+        calcHighscore();
     }
 
     private void addRechenoperation(int id){
@@ -114,6 +118,49 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    private void calcHighscore(){
+        int typeCount = 0;
+        int typeNr = 0;
+        int maxPoints = 0;
+        if(settings.getRechenOperatoren().isEmpty()){
+            highscore.setText(String.valueOf(maxPoints));
+            return;
+        }
+        int length = settings.getRechenOperatoren().size();
+        int typeLength = Game.exerciceCount / length;
+        for(int i=0;i<Game.exerciceCount;i++){
+            if(typeCount == typeLength){
+                typeNr++;
+                typeCount = 0;
+            }
+            int operator = settings.getRechenOperatoren().get(typeNr);
+            switch(operator){
+                case 1:
+                    maxPoints += zahlenraumPoints;
+                    Log.d(LOG_TAG,"Plus - Gewichtung 1");
+                    break;
+                case 2:
+                    maxPoints += zahlenraumPoints;
+                    Log.d(LOG_TAG,"Minus - Gewichtung 1");
+                    break;
+                case 3:
+                    maxPoints += zahlenraumPoints * 2;
+                    Log.d(LOG_TAG,"Mal - Gewichtung 2");
+                    break;
+                case 4:
+                    maxPoints += zahlenraumPoints * 2;
+                    Log.d(LOG_TAG,"Teilen - Gewichtung 2");
+                    break;
+            }
+            typeCount++;
+        }
+        Log.d(LOG_TAG, "Max HighScore" + maxPoints);
+        settings.setHighScore(maxPoints);
+       highscore.setText(String.valueOf(maxPoints));
+    }
+
+
+
 
 
 
@@ -123,6 +170,8 @@ public class SettingsActivity extends AppCompatActivity {
         String buttonText = button.getText().toString();
         Log.d(LOG_TAG,"Text " + buttonText);
         fillZahlenraum(Integer.parseInt(buttonText));
+        calcHighscore();
+
     }
 
     public void clickSave(View v){
