@@ -13,12 +13,24 @@ import business.Highscore;
 import util.Tool;
 
 /**
- * Created by admin on 22.05.2017.
+ * Managing the Data in the "highscore" Table on the DB
+ * Insert/Select (List)
+ *
+ * @author D. Tsichlakis
  */
 public class DataHighscore {
     private static SQLiteDatabase database;
     private static final String LOG_TAG = DataHighscore.class.getSimpleName();
 
+
+    /**
+     * Get all highscore entries from DB (Highscore Table)
+     * and return a highscore List with the Highscore Objects
+     *
+     * @param context The current context.
+     *
+     * @return  Highscore List
+     */
     public static List<Highscore> getHighscore(Context context){
         database = DBCreator.getInstance(context).getWritableDatabase();
         Cursor cursor = database.query(DBCreator.TABELLEHIGHSCORE, null,null, null, null, null, DBCreator.HIGHSCOREFELD+" DESC,"+DBCreator.TIMEFELD+","+DBCreator.DATEFELD + " DESC");
@@ -32,6 +44,13 @@ public class DataHighscore {
         return highScoreList;
     }
 
+    /**
+     * Creates a Highscore Object  from the
+     * data of the DB row (cursor)
+     *
+     * @param cursor The database cursor
+     * @return  Highscore Object
+     */
     private static Highscore higscoreFromCursor(Cursor cursor){
         Highscore highscore = new Highscore();
         highscore.setId(cursor.getInt(cursor.getColumnIndex(DBCreator.IDFELD)));
@@ -44,7 +63,12 @@ public class DataHighscore {
         return highscore;
     }
 
-
+    /**
+     * Insert Highscore Object into DB.
+     *
+     * @param highscore The Highscore Object.
+     * @param context   The current context.
+     */
     public static void insertHigscore (Highscore highscore,Context context){
         try{
             database = DBCreator.getInstance(context).getWritableDatabase();
@@ -57,6 +81,13 @@ public class DataHighscore {
         }
     }
 
+    /**
+     * Create and return ContentValues Object from
+     * Highscore Object.
+     *
+     * @param highscore The Highscore Object.
+     * @return cv  ContentValues Object.
+     */
     private static ContentValues createContentValues(Highscore highscore){
         ContentValues cv = new ContentValues();
         cv.put(DBCreator.NAMEFELD, highscore.getName());

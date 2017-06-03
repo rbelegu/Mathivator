@@ -9,13 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 import business.Settings;
 /**
- * Created by admin on 22.05.2017.
- * javadoc missing
+ * Managing the Data in the "settings" Table on the DB
+ * Insert/Select
+ *
+ * @author D. Tsichlakis + G. Ramizi
  */
 public class DataSettings {
     private static SQLiteDatabase database;
     private static final String LOG_TAG = DataSettings.class.getSimpleName();
 
+    /**
+     * Get all setting entries from DB (Settings Table)
+     * and return a Settings Object
+     *
+     * @param context The current context.
+     *
+     * @return  Settings Object
+     */
     public static Settings getSettings(Context context){
         database = DBCreator.getInstance(context).getWritableDatabase();
         Cursor cursor = database.query(DBCreator.TABELLESETTINGS, null,DBCreator.IDFELD+"=1", null, null, null, null);
@@ -26,6 +36,13 @@ public class DataSettings {
         return settings;
     }
 
+    /**
+     * Creates a Settings Object from the
+     * data of the DB row (cursor)
+     *
+     * @param cursor The database cursor
+     * @return  Settings Object
+     */
     private static Settings settingFromCursor(Cursor cursor){
         Settings settings = new Settings();
         settings.setId( cursor.getInt(cursor.getColumnIndex(DBCreator.IDFELD)));
@@ -37,6 +54,13 @@ public class DataSettings {
         return settings;
     }
 
+    /**
+     * Create a Integer List with the selected/saved "Grundrechenarten / RechenOperatoren"
+     * from the  "RECHENEINHEITENFELD" String, which are separated by a comma.
+     *
+     * @param rechenEinheitenString String with the selected/saved "RechenOperatoren"
+     * @return  list with the selected/saved "RechenOperatoren"
+     */
     private static List<Integer> generateRecheneinheiten(String rechenEinheitenString){
         List<Integer> list = new ArrayList<>();
         if(rechenEinheitenString.length()>0) {
@@ -47,6 +71,12 @@ public class DataSettings {
         return list;
     }
 
+    /**
+     * Save Settings Object into DB.
+     *
+     * @param settings The Settings Object.
+     * @param context   The current context.
+     */
     public static void saveSettings (Settings settings,Context context){
         try{
             database = DBCreator.getInstance(context).getWritableDatabase();
@@ -59,6 +89,13 @@ public class DataSettings {
         }
     }
 
+    /**
+     * Create and return ContentValues Object from Settings Object.
+     * The rechenOperatoren Integer List will be converted back into a String.
+     *
+     * @param settings The Settings Object.
+     * @return cv  ContentValues Object.
+     */
     private static ContentValues createContentValues(Settings settings){
         ContentValues cv = new ContentValues();
         cv.put(DBCreator.IDFELD, settings.getId());

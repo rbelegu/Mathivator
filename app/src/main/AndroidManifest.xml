@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="base.MainActivity">
+        <activity
+            android:name="base.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,13 +25,16 @@
         </activity>
         <activity
             android:name="base.SettingsActivity"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="base.GameActivity"
             android:label="@string/play"
             android:screenOrientation="portrait"/>
-        <activity android:name="base.HighscoreActivity"
-            android:label="@string/highscore"></activity>
+        <activity
+            android:name="base.HighscoreActivity"
+            android:label="@string/highscore"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
