@@ -14,7 +14,7 @@ public class Game {
     private List<Exercise> exerciseList;
     private Settings settings;
     private static final String LOG_TAG = Game.class.getSimpleName();
-    private static final int exerciceCount = 12;
+    public static final int exerciceCount = 12;
     public Game(Settings settings){
         this.settings = settings;
     }

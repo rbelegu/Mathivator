@@ -50,6 +50,7 @@ public class DataSettings {
         String rechenEinheitenString = cursor.getString(cursor.getColumnIndex(DBCreator.RECHENEINHEITENFELD));
         settings.setRechenOperatoren(generateRecheneinheiten(rechenEinheitenString));
         settings.setMaximumPoints(cursor.getInt(cursor.getColumnIndex(DBCreator.MAXPOINTSFELD)));
+        settings.setHighScore(cursor.getInt(cursor.getColumnIndex(DBCreator.HIGHSCOREFELD)));
         settings.setZahlenRaum(cursor.getInt(cursor.getColumnIndex(DBCreator.ZAHLENRAUM)));
         return settings;
     }
