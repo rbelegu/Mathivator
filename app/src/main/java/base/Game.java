@@ -2,6 +2,8 @@ package base;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import business.Exercise;
 import business.Settings;
 
@@ -60,8 +62,8 @@ public class Game {
     }
 
     private void createPlus(Exercise ex, int zahlenRaum){
-        int solution = getRandomNumber(zahlenRaum);
-        int a = getRandomNumber(solution);
+        int solution = getRandomNumber(0,zahlenRaum);
+        int a = getRandomNumber(0, solution);
         int b = solution - a;
         ex.setFirst(a);
         ex.setSecond(b);
@@ -70,8 +72,8 @@ public class Game {
     }
 
     private void createMinus(Exercise ex, int zahlenRaum){
-        int a = getRandomNumber(zahlenRaum);
-        int b = getRandomNumber(zahlenRaum);
+        int a = getRandomNumber(0, zahlenRaum);
+        int b = getRandomNumber(0, zahlenRaum);
         if(a>b){
             ex.setFirst(a);
             ex.setSecond(b);
@@ -85,10 +87,9 @@ public class Game {
     }
 
     private void createMal(Exercise ex, int zahlenRaum){
-        int solution = getRandomNumber(zahlenRaum);
+        int solution = getRandomNumber(1, zahlenRaum);
         int bsel = solution;
         ArrayList<Integer> possible = new ArrayList<>();
-        int b = getRandomNumber(zahlenRaum);
         while(bsel>0){
             if((solution%bsel) == 0){
                 possible.add(bsel);
@@ -104,7 +105,7 @@ public class Game {
     }
 
     private void createDivision(Exercise ex, int zahlenRaum){
-        int a = getRandomNumber(zahlenRaum);
+        int a = getRandomNumber(1, zahlenRaum);
         ArrayList<Integer> possible = new ArrayList<>();
         int bsel = a;
         while(bsel>0){
@@ -123,7 +124,7 @@ public class Game {
     public List<Exercise> getExerciseList() {
         return exerciseList;
     }
-    private int getRandomNumber(int zahlenRaum){
-        return (int)(Math.random()*zahlenRaum);
+    private int getRandomNumber(int min, int max){
+        return (new Random()).nextInt((max-min)+1)+min;
     }
 }
