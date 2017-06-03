@@ -59,15 +59,7 @@ public class Highscore {
         return city;
     }
 
-    public void setCity(String lat) {
-        this.city = lat;
-    }
-
-    public double getLon() {
-        return lon;
-    }
-
-    public void setLon(double lon) {
-        this.lon = lon;
+    public void setCity(String city) {
+        this.city = city;
     }
 }

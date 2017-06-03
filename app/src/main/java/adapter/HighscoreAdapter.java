@@ -32,22 +32,24 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rowView = inflater.inflate(R.layout.custom_highscore_item, parent, false);
             Highscore item = getItem(position);
+            TextView rankView = (TextView) rowView.findViewById(R.id.highscoreRank);
             TextView dateView = (TextView) rowView.findViewById(R.id.highscoreDate);
             TextView nameView = (TextView) rowView.findViewById(R.id.highscoreName);
             TextView pointView = (TextView) rowView.findViewById(R.id.highscorePoints);
             TextView timeView = (TextView) rowView.findViewById(R.id.highscoreTime);
             TextView cityView = (TextView) rowView.findViewById(R.id.highscoreCity);
-            //TextView lonView = (TextView) rowView.findViewById(R.id.highscoreLon);
+            rankView.setText(String.valueOf(position+1));
             dateView.setText(Tool.dateToString(item.getDate()));
             nameView.setText(item.getName());
-            String punkte = parent.getResources().getString(R.string.punkte);
-            String zeit = parent.getResources().getString(R.string.time);
-            String ort = parent.getResources().getString(R.string.city);
-            //String lon = parent.getResources().getString(R.string.lon);
-            pointView.setText(punkte + String.valueOf(item.getHighscore()));
-            timeView.setText(zeit + String.valueOf(item.getTime()));
-            cityView.setText(ort + String.valueOf(item.getCity()));
-            //lonView.setText(lon + String.valueOf(item.getLon()));
+            pointView.setText(String.valueOf(item.getHighscore()));
+            timeView.setText(String.valueOf(item.getTime()));
+            String city = String.valueOf(item.getCity());
+            if (!city.equals("null")){
+                cityView.setText(city);
+            }
+            else{
+                cityView.setText("-");
+            }
             return rowView;
         }
         return convertView;
