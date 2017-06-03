@@ -6,8 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * Created by admin on 22.05.2017.
- * as
+ * Creates Database and Database connection
+ *
+ * @author D. Tsichlakis
+ *
  */
 
 public class DBCreator extends SQLiteOpenHelper {
@@ -31,6 +33,11 @@ public class DBCreator extends SQLiteOpenHelper {
         super(context, DATENBANK_NAME, null, DATENBANK_VERSION);
         Log.d(LOG_TAG, "DBCreator hat die Datenbank " + getDatabaseName() + "erstellt");
     }
+
+    /**
+     * Called when the database is created for the first time
+     * Creates Settings Table and Highscore Table with attributes
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "Erstelle Datenbank");
@@ -40,13 +47,21 @@ public class DBCreator extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO `"+TABELLESETTINGS+"` VALUES(1,'1,2,3,4',3,0,'',50)");
     }
 
+
+    /**
+     * Called when the database needs to be upgraded.
+     *
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //falls updates gemacht werden hier Änderungen eintragen
     }
+
     /**
-     * Erstelle eine Instanz nach Singelton Pattern
-     * */
+     * Creates and Return DB instance (Singelton Pattern)
+     *
+     * @return
+     */
     public static synchronized DBCreator getInstance(Context context){
         if(INSTANCE == null){
             INSTANCE = new DBCreator(context.getApplicationContext());

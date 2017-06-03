@@ -189,13 +189,16 @@ public class GameActivity extends AppCompatActivity {
                     ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                             PackageManager.PERMISSION_GRANTED) {
                 Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-                double lat = location.getLatitude();
-                double lng = location.getLongitude();
-                Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
-                List<Address> address = geoCoder.getFromLocation(lat, lng, 1);
-                int maxLines = address.get(0).getMaxAddressLineIndex();
-                finalCity = address.get(0).getAddressLine(maxLines - 1);
+                if(location != null) {
+                    double lat = location.getLatitude();
+                    double lng = location.getLongitude();
+                    Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+                    List<Address> address = geoCoder.getFromLocation(lat, lng, 1);
+                    int maxLines = address.get(0).getMaxAddressLineIndex();
+                    finalCity = address.get(0).getAddressLine(maxLines - 1);
+                }else{
+                    Toast.makeText(this, R.string.error_gpsnotfound, Toast.LENGTH_LONG).show();
+                }
             }else {
                 Toast.makeText(this, R.string.error_permission, Toast.LENGTH_LONG).show();
             }
