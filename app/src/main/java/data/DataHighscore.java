@@ -17,6 +17,7 @@ import util.Tool;
  * Insert/Select (List)
  *
  * @author D. Tsichlakis
+ * @version 1.0
  */
 public class DataHighscore {
     private static SQLiteDatabase database;

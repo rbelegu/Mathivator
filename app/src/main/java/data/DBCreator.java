@@ -10,6 +10,7 @@ import android.util.Log;
  * and Database connection.
  *
  * @author D. Tsichlakis + G. Ramizi
+ * @version 1.0
  */
 
 public class DBCreator extends SQLiteOpenHelper {

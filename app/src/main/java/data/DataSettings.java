@@ -13,6 +13,7 @@ import business.Settings;
  * Insert/Select
  *
  * @author D. Tsichlakis + G. Ramizi
+ * @version 1.0
  */
 public class DataSettings {
     private static SQLiteDatabase database;
