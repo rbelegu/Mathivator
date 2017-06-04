@@ -13,7 +13,7 @@ import business.Settings;
  * Sets up the Game
  *
  *
- * @author R. Belegu + D. Tsichlakis
+ * @author R. Belegu
  * @version 1.0
  */
 
