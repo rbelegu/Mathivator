@@ -105,7 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * Method used for "Rechenoperator" changes and calculates the max
+     * Method used for "Rechenoperator" changes and calculation of the max
      * possible highscore.
      *
      * @param view Clicked view element.
@@ -119,9 +119,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * Check which Rechenoperator has changed and remember it.
+     * Check which "Rechenoperator" has changed and remember it.
      *
-     * @param id ID of Rechenoperator.
+     * @param id ID of Rechenoperator: 1 = Plus, 2=Minus, 3=Multiplication, 4=Division.
      *
      */
     private void addRechenoperation(int id){
@@ -142,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * Check if Rechenoperator Status from activated to deactivated
+     * Check if "Rechenoperator" Status from activated to deactivated
      * or reverse has changed. Depends on case call method.
      *
      * @param id ID of Rechenoperator.
@@ -167,7 +167,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * Calculate and show new Highscore
+     * Calculate and shows new Highscore.
      *
      *
      */
