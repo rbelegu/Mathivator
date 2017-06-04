@@ -24,7 +24,7 @@ import global.GlobalEvents;
 /**
  * Class SettingsActivity
  * Different methods to manage Player's Name (with ChangedListener),
- * "Zahlenraum", "Rechenoperatoren" and max possibel "Highscore"
+ * "Zahlenraum", "Rechenoperatoren" and max possible "Highscore"
  *
  * @author D. Tsichlakis + G. Ramizi
  * @version 1.0
@@ -105,10 +105,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * "Rechenoperator" changed, then run methods
-     * update Highscore and save settings
+     * Method used for "Rechenoperator" changes and calculates the max
+     * possible highscore.
      *
-     * @param view Current view.
+     * @param view Clicked view element.
      *
      */
     public void clickRechenoperation(View view){
@@ -119,7 +119,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * Check which Rechenoperator has changed
+     * Check which Rechenoperator has changed and remember it.
      *
      * @param id ID of Rechenoperator.
      *
