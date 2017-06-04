@@ -13,7 +13,7 @@ import util.Tool;
 import com.example.admin.mathivator.R;
 /**
  * Class HighscoreAdapter
- * Adapter for the Highscore
+ * Simple Adapter to draw the Highscore list
  *
  * @author D. Tsichlakis
  * @version 1.0
@@ -25,11 +25,26 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
         private TextView itemView;
     }
 
+    /**
+     * Constructor sets up Adapter
+     *
+     * @param context The current context.
+     * @param textViewResourceId The resource ID for a layout file containing a
+     *                           TextView to use when instantiating views.
+     * @param items Items to show in list view
+     */
     public HighscoreAdapter(Context context, int textViewResourceId, List<Highscore> items) {
         super(context, textViewResourceId, items);
         this.context = context;
     }
 
+    /**
+     * Gets the view for each item in adapter
+     * @param position Position in items lise
+     * @param convertView The current view
+     * @param parent The parent of the view
+     * @return Updated view with item added to it
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
