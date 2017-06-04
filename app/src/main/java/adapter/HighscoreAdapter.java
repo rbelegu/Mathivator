@@ -67,7 +67,7 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
                 cityView.setText(city);
             }
             else{
-                cityView.setText("-");
+                cityView.setText(R.string.nocity);
             }
             return rowView;
         }
