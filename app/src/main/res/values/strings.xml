@@ -35,11 +35,12 @@
     <string name="zero">0</string>
     <string name="back">back</string>
     <string name="go">go</string>
-    <string name="error_permission">Keine GPS Berechtigung. Bitte vergeben.</string>
+    <string name="error_permission">Keine GPS. GPS-Berechtigung für diese App vergeben.</string>
     <string name="punkte">Punkte: </string>
     <string name="time">Zeit(s): </string>
     <string name="city">Ort: </string>
     <string name="error_settings">Keine Operatoren gewählt.</string>
     <string name="title_big">Mathivator</string>
     <string name="error_gpsnotfound">Kein GPS Signal gefunden.</string>
+    <string name="nocity">unbekannt</string>
 </resources>
