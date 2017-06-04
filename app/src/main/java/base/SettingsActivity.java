@@ -22,7 +22,7 @@ import data.DataSettings;
 import global.GlobalEvents;
 
 /**
- * Class SettingsActibity
+ * Class SettingsActivity
  * Different methods to manage Player's Name (with ChangedListener),
  * "Zahlenraum", "Rechenoperatoren" and max possibel "Highscore"
  *

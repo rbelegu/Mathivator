@@ -14,6 +14,14 @@ import adapter.HighscoreAdapter;
 import business.Highscore;
 import data.DataHighscore;
 
+/**
+ * Class HighscoreActivity
+ * Create and show Highscore list
+ *
+ * @author D. Tsichlakis
+ * @version 1.0
+ */
+
 public class HighscoreActivity extends AppCompatActivity {
 
     @Override
@@ -24,6 +32,12 @@ public class HighscoreActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Show Highscore list
+     *
+     * @param highscoreList Highscore list.
+     *
+     */
     private void initPlanDayList(List<Highscore> highscoreList){
         HighscoreAdapter adapter = new HighscoreAdapter(this, R.layout.custom_highscore_item, highscoreList);
         ListView listView = (ListView)findViewById(R.id.highscoreList);
