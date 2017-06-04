@@ -25,7 +25,7 @@ public class Game {
     }
 
     public void initializeGame(){
-        Log.d(LOG_TAG,"Initialize Game: ");
+//        Log.d(LOG_TAG,"Initialize Game: ");
         exerciseList = new ArrayList<>();
         int length = settings.getRechenOperatoren().size();
         int typeLength =  EXCERCICECOUNT / length;
@@ -48,16 +48,16 @@ public class Game {
         switch(ex.getOperator()){
             case 1:
                 createPlus(ex,zahlenRaum);
-                Log.d(LOG_TAG,"create Plus");
+                //Log.d(LOG_TAG,"create Plus");
                 break;
             case 2: createMinus(ex,zahlenRaum);
-                Log.d(LOG_TAG,"create Minus");
+                //Log.d(LOG_TAG,"create Minus");
                 break;
             case 3: createMal(ex,zahlenRaum);
-                Log.d(LOG_TAG,"create Mal");
+                //Log.d(LOG_TAG,"create Mal");
                 break;
             case 4: createDivision(ex,zahlenRaum);
-                Log.d(LOG_TAG,"create teilen");
+                //Log.d(LOG_TAG,"create teilen");
                 break;
         }
 

@@ -73,6 +73,7 @@ public class GameActivity extends AppCompatActivity {
                 GlobalEvents.SETTINGS.goTo(this.solutionView);
                 return;
             }
+            //TODO v1.1: chk Existing Game an restart it
             game = new Game(settings);
             game.initializeGame();
             startTime = new Date().getTime();
