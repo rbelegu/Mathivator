@@ -22,8 +22,13 @@ import data.DataSettings;
 import global.GlobalEvents;
 
 /**
- * Java doc missing
- * */
+ * Class SettingsActibity
+ * Different methods to manage Player's Name (with ChangedListener),
+ * "Zahlenraum", "Rechenoperatoren" and max possibel "Highscore"
+ *
+ * @author D. Tsichlakis + N. Hafen
+ * @version 1.0
+ */
 public class SettingsActivity extends AppCompatActivity {
     private static final String LOG_TAG = AppCompatActivity.class.getSimpleName();
     private Button plus;
@@ -77,6 +82,9 @@ public class SettingsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Initialize
+     */
     private void initialize(){
         settings = DataSettings.getSettings(this);
         Log.d(LOG_TAG,"zahlenraum" + settings.getZahlenRaum());
@@ -96,6 +104,13 @@ public class SettingsActivity extends AppCompatActivity {
         fillField();
     }
 
+    /**
+     * "Rechenoperator" changed, then run methods
+     * update Highscore and save settings
+     *
+     * @param view Current view.
+     *
+     */
     public void clickRechenoperation(View view){
         Button b = (Button) view;
         addRechenoperation(b.getId());
@@ -103,6 +118,12 @@ public class SettingsActivity extends AppCompatActivity {
         clickSave();
     }
 
+    /**
+     * Check which Rechenoperator has changed
+     *
+     * @param id ID of Rechenoperator.
+     *
+     */
     private void addRechenoperation(int id){
         switch(id){
             case R.id.plus :
@@ -120,9 +141,14 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-
-
-
+    /**
+     * Check if Rechenoperator Status from activated to deactivated
+     * or reverse has changed. Depends on case call method.
+     *
+     * @param id ID of Rechenoperator.
+     * @param b Button.
+     *
+     */
     private void changeRechenoperation(int id,Button b){
         if(!settings.getRechenOperatoren().contains(id)){
             settings.getRechenOperatoren().add(id);
@@ -140,6 +166,11 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Calculate and show new Highscore
+     *
+     *
+     */
     private void calcHighscore(){
         int typeCount = 0;
         int typeNr = 0;
@@ -182,10 +213,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
+    /**
+     * "Zahlenraum" changed, then run methods
+     * update Highscore and save settings
+     *
+     * @param v Current view.
+     *
+     */
     public void clickZahlenraum(View v){
         Button button = (Button)v;
         clearZahlenraum();
@@ -197,13 +231,21 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Save Settings itno DB
+     *
+     */
     public void clickSave(){
         settings.setName(name.getText().toString());
         settings.setMaximumPoints(zahlenraumPoints);
         DataSettings.saveSettings(settings,this);
     }
 
-
+    /**
+     * Fill the fields in the View with the values
+     * direct or by using other methods
+     *
+     */
     private void fillField(){
         fillRecheneinheiten(settings.getRechenOperatoren());
         fillZahlenraum(settings.getZahlenRaum());
@@ -212,6 +254,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Check if Rechneinheit (Rechenoperator) is in the List.
+     * If Yes set then call Method to set Rechenoperator Button to active.
+     *
+     * @param recheneinheiten List with "Recheneinheiten".
+     */
     private void fillRecheneinheiten(List<Integer> recheneinheiten) {
         if (recheneinheiten.contains(1)) {
             setActive(plus);
@@ -227,6 +275,10 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Set all "Zahlraum" Buttons to inactive.
+     *
+     */
     private void clearZahlenraum(){
         setInActive(zehn);
         setInActive(zwanzig);
@@ -237,6 +289,12 @@ public class SettingsActivity extends AppCompatActivity {
         setInActive(tausend);
     }
 
+    /**
+     * Check which Zahlenraum is in the Parameter.
+     * Then call Method to set this Zahlenraum Button to active.
+     *
+     * @param zahlenraum Zahlenraum.
+     */
     private void fillZahlenraum(int zahlenraum){
         settings.setZahlenRaum(zahlenraum);
         switch(zahlenraum){
@@ -264,10 +322,20 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Set Button to active.
+     *
+     * @param b Button.
+     */
     private void setActive(Button b){
         b.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary));
         b.setTextColor(Color.WHITE);
     }
+    /**
+     * Set Button to inactive.
+     *
+     * @param b Button.
+     */
     private void setInActive(Button b){
         b.setBackgroundColor(ContextCompat.getColor(this,R.color.lightGrey));
         b.setTextColor(Color.DKGRAY);
