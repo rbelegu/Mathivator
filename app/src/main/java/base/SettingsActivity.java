@@ -22,8 +22,12 @@ import data.DataSettings;
 import global.GlobalEvents;
 
 /**
- * Java doc missing
- * */
+ * Class "SettingsActivity"
+ * with methods
+ *
+ * @author G. Ramizi
+ * @version 1.0
+ */
 public class SettingsActivity extends AppCompatActivity {
     private static final String LOG_TAG = AppCompatActivity.class.getSimpleName();
     private Button plus;
