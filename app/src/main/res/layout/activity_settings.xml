@@ -109,12 +109,14 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:orientation="horizontal">
-           <ImageButton
-               android:layout_width="40dp"
-               android:layout_height="40dp"
-               android:src="@drawable/star_transparent"
-               android:scaleType="centerCrop"
-               />
+
+               <ImageButton
+                   android:layout_width="40dp"
+                   android:layout_height="40dp"
+                   android:src="@drawable/star_transparent"
+                   android:scaleType="centerCrop"
+                   android:background="@null"
+                   />
            <TextView
                android:id="@+id/highscoreView"
                style="@style/labelStyle"
