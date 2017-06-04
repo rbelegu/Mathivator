@@ -11,7 +11,7 @@ import business.Settings;
 
 import static org.junit.Assert.*;
 /**
- * Class GameTEst
+ * Class GameTest
  *
  * Tests Excercises
  *
