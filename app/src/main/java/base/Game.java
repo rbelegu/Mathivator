@@ -17,7 +17,7 @@ public class Game {
     private List<Exercise> exerciseList;
     private Settings settings;
     private static final String LOG_TAG = Game.class.getSimpleName();
-    public static final int exerciceCount = 12;
+    public static final int EXCERCICECOUNT = 12;
     public Game(Settings settings){
         this.settings = settings;
     }
@@ -26,10 +26,10 @@ public class Game {
         Log.d(LOG_TAG,"Initialize Game: ");
         exerciseList = new ArrayList<>();
         int length = settings.getRechenOperatoren().size();
-        int typeLength = exerciceCount / length;
+        int typeLength =  EXCERCICECOUNT / length;
         int typeCount = 0;
         int typeNr = 0;
-        for(int i=0;i<exerciceCount;i++){
+        for(int i=0;i< EXCERCICECOUNT;i++){
             if(typeCount == typeLength){
                 typeNr++;
                 typeCount = 0;

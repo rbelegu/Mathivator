@@ -119,9 +119,9 @@ public class GameActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
-        int boxWidth = (width/12);
+        int boxWidth = (width/Game.EXCERCICECOUNT);
         int count = 1;
-        for(int i = 0; i < 12; i++){
+        for(int i = 0; i < Game.EXCERCICECOUNT; i++){
             TextView historyBox = new TextView(this);
             historyBox.setText(String.valueOf(count));
             historyBox.setBackgroundColor(ContextCompat.getColor(this,R.color.lightGrey));
@@ -154,7 +154,7 @@ public class GameActivity extends AppCompatActivity {
     public void next(View v){
         if(play) {
             checkSolution();
-            if (currentExerciseIndex < 12) {
+            if (currentExerciseIndex < Game.EXCERCICECOUNT) {
                 setExercise();
             } else {
                 play = false;

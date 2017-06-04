@@ -3,6 +3,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,6 +46,22 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         initialize();
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            clickSave();
+            }
+        });
     }
 
     @Override
@@ -82,6 +100,7 @@ public class SettingsActivity extends AppCompatActivity {
         Button b = (Button) view;
         addRechenoperation(b.getId());
         calcHighscore();
+        clickSave();
     }
 
     private void addRechenoperation(int id){
@@ -100,6 +119,9 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
+
 
     private void changeRechenoperation(int id,Button b){
         if(!settings.getRechenOperatoren().contains(id)){
@@ -127,8 +149,8 @@ public class SettingsActivity extends AppCompatActivity {
             return;
         }
         int length = settings.getRechenOperatoren().size();
-        int typeLength = Game.exerciceCount / length;
-        for(int i=0;i<Game.exerciceCount;i++){
+        int typeLength = Game.EXCERCICECOUNT / length;
+        for(int i=0;i<Game.EXCERCICECOUNT;i++){
             if(typeCount == typeLength){
                 typeNr++;
                 typeCount = 0;
@@ -171,10 +193,11 @@ public class SettingsActivity extends AppCompatActivity {
         Log.d(LOG_TAG,"Text " + buttonText);
         fillZahlenraum(Integer.parseInt(buttonText));
         calcHighscore();
+        clickSave();
 
     }
 
-    public void clickSave(View v){
+    public void clickSave(){
         settings.setName(name.getText().toString());
         settings.setMaximumPoints(zahlenraumPoints);
         DataSettings.saveSettings(settings,this);
