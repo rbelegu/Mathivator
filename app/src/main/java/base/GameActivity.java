@@ -35,6 +35,16 @@ import data.DataHighscore;
 import data.DataSettings;
 import global.GlobalEvents;
 
+/**
+ * Class GameActivity
+ *
+ * Sets up the Game
+ *
+ *
+ * @author R. Belegu + D. Tsichlakis
+ * @version 1.0
+ */
+
 public class GameActivity extends AppCompatActivity {
     private static final String LOG_TAG = GameActivity.class.getSimpleName();
     private Settings settings;

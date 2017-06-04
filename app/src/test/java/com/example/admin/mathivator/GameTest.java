@@ -11,9 +11,14 @@ import business.Settings;
 
 import static org.junit.Assert.*;
 /**
- * Created by admin on 27.05.2017.
+ * Class GameTEst
+ *
+ * Tests Excercises
+ *
+ *
+ * @author N.Hafen
+ * @version 1.0
  */
-
 public class GameTest {
     int Zahlenraum = 100;
     @Test
