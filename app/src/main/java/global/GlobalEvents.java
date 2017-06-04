@@ -10,7 +10,10 @@ import base.MainActivity;
 import base.SettingsActivity;
 
 /**
- * Created by admin on 24.05.2017.
+ * Global Enumeration "GlobalEvents" as Interface to call the Activities from everywhere.
+ *
+ * @author R. Belegu
+ * @version 1.0
  */
 
 public enum GlobalEvents {
@@ -32,7 +35,12 @@ public enum GlobalEvents {
                 break;
         }
     }
-
+    /*
+    * Method to call the "Einstellungen".
+    *
+    * @param activity Ancestor of Activity
+    *
+    * */
     private void goToSettings(View v){
         try{
             Intent nextScreen = new Intent(v.getContext(), SettingsActivity.class);
@@ -41,7 +49,12 @@ public enum GlobalEvents {
             Log.d(LOG_TAG,"Error in goToSettingsListener " + e );
         }
     }
-
+    /*
+    * Method to call the "Start".
+    *
+    * @param activity Ancestor of Activity
+    *
+    * */
     private void goToMain(View v){
         try{
             Intent nextScreen = new Intent(v.getContext(), MainActivity.class);
@@ -50,7 +63,12 @@ public enum GlobalEvents {
             Log.d(LOG_TAG,"Error in goToMainListener " + e );
         }
     }
-
+    /*
+    * Method to run the "Game".
+    *
+    * @param activity Ancestor of Activity
+    *
+    * */
     private void goToPlay(View v){
         try{
             Intent nextScreen = new Intent(v.getContext(), GameActivity.class);
@@ -59,6 +77,12 @@ public enum GlobalEvents {
             Log.d(LOG_TAG,"Error in goToPlayListener " + e );
         }
     }
+    /*
+    * Method to call the "Rangliste".
+    *
+    * @param activity Ancestor of Activity
+    *
+    * */
     private void gotToHighScore(View v){
         try{
             Intent nextScreen = new Intent(v.getContext(), HighscoreActivity.class);
