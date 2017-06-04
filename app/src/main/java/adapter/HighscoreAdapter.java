@@ -12,7 +12,11 @@ import util.Tool;
 
 import com.example.admin.mathivator.R;
 /**
-
+ * Class HighscoreAdapter
+ * Adapter for the Highscore
+ *
+ * @author D. Tsichlakis
+ * @version 1.0
  */
 
 public class HighscoreAdapter extends ArrayAdapter<Highscore> {
