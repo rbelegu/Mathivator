@@ -4,7 +4,7 @@
     <string name="title_activity_settings">Einstellungen</string>
     <string name="name">Name</string>
     <string name="zahlenraum">Zahlenraum</string>
-    <string name="highscore">Highscore</string>
+    <string name="highscore">Maximale Punktezahl</string>
     <string name="operatoren">Grundrechenarten</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
@@ -34,7 +34,7 @@
     <string name="zero">0</string>
     <string name="back">back</string>
     <string name="go">go</string>
-    <string name="error_permission">Keine GPS berechtigung bitte vergeben</string>
+    <string name="error_permission">Keine GPS Berechtigung. Bitte vergeben.</string>
     <string name="punkte">Punkte: </string>
     <string name="time">Zeit(s): </string>
     <string name="city">Ort: </string>
