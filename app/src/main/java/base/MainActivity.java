@@ -11,7 +11,13 @@ import android.widget.Button;
 import com.example.admin.mathivator.R;
 
 import global.GlobalEvents;
-
+/**
+ * Class "MainActivity"
+ * Start View after starting the App. Navigation to the other Views.
+ *
+ * @author N. Hafen
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = AppCompatActivity.class.getSimpleName();
     private View.OnClickListener settingsListener;
@@ -23,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         initialize();
     }
 
+    /*
+    * Initialization of the Buttons for the Navigation.
+    *
+    * */
     public void initialize(){
         Button settingsButton = (Button) findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(goToSettingsListener());
@@ -32,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
         highscoreButton.setOnClickListener(goToHighscoreListener());
     }
 
+    /*
+    * Method to open the "Rangliste" View.
+    *
+    * */
     public View.OnClickListener goToHighscoreListener(){
         settingsListener = new View.OnClickListener(){
             @Override
@@ -42,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         return settingsListener;
     }
 
+    /*
+    * Method to open the "Einstellungen" View.
+    *
+    * */
     public View.OnClickListener goToSettingsListener(){
         settingsListener = new View.OnClickListener(){
             @Override
@@ -52,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         return settingsListener;
     }
 
+    /*
+    * Method to open the "Game" View.
+    * This starts the Math-Game.
+    * */
     public View.OnClickListener goToPlayListener(){
         settingsListener = new View.OnClickListener(){
             @Override
