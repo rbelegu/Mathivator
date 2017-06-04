@@ -26,7 +26,7 @@ import global.GlobalEvents;
  * Different methods to manage Player's Name (with ChangedListener),
  * "Zahlenraum", "Rechenoperatoren" and max possibel "Highscore"
  *
- * @author D. Tsichlakis + N. Hafen
+ * @author D. Tsichlakis + G. Ramizi
  * @version 1.0
  */
 public class SettingsActivity extends AppCompatActivity {
