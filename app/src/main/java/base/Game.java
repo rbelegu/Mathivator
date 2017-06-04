@@ -8,9 +8,11 @@ import business.Exercise;
 import business.Settings;
 
 /**
- * The GAME
+ * Class Game
  *
- * @author Rinon + D. Tsichlakis
+ *
+ * @author R. Belegu + D. Tsichlakis
+ * @version 1.0
  */
 
 public class Game {
