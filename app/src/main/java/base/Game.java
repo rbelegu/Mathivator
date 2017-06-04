@@ -10,6 +10,8 @@ import business.Settings;
 /**
  * Class Game
  *
+ * Sets up the Game
+ *
  *
  * @author R. Belegu + D. Tsichlakis
  * @version 1.0
@@ -23,6 +25,11 @@ public class Game {
     public Game(Settings settings){
         this.settings = settings;
     }
+
+    /**
+     * This handles the initialization of the Game and
+     * all excercises
+     */
 
     public void initializeGame(){
 //        Log.d(LOG_TAG,"Initialize Game: ");
@@ -41,6 +48,12 @@ public class Game {
             typeCount++;
         }
     }
+
+    /**
+     * This handles the creation of Excercices depending on Operator
+     * @param operator The chosen math operators.
+     * @param zahlenRaum the highest Number in the Math excercises
+     */
 
     private Exercise createExercice(Integer operator, int zahlenRaum){
         Exercise ex = new Exercise();
@@ -63,6 +76,13 @@ public class Game {
 
         return ex;
     }
+    /**
+     * Creates an summation excercise
+     * Based on the zahlenRaum it defines an possible solution
+     * Based on the solution it defines the possible summand
+     * @param ex the Excercise.
+     * @param zahlenRaum the highest possible Number in the Math excercises
+     */
 
     private void createPlus(Exercise ex, int zahlenRaum){
         int solution = getRandomNumber(0,zahlenRaum);
@@ -73,7 +93,13 @@ public class Game {
         ex.setSolution(solution);
         ex.setPoints(settings.getMaximumPoints());
     }
-
+    /**
+     * Creates an subtraction excercise
+     * Based on the zahlenRaum it defines an possible minued and subtrahend
+     * Based on the minued and the subtrahend the solution is calculated
+     * @param ex the Excercise.
+     * @param zahlenRaum the highest possible Number in the Math excercises
+     */
     private void createMinus(Exercise ex, int zahlenRaum){
         int a = getRandomNumber(0, zahlenRaum);
         int b = getRandomNumber(0, zahlenRaum);
@@ -88,6 +114,15 @@ public class Game {
         }
         ex.setPoints(settings.getMaximumPoints());
     }
+    /**
+     * Creates an multiplication excercise
+     * Based on the zahlenRaum it defines an possible solution
+     * With the solution an Array list is build of possible factors
+     * For defining the first Factor "a" a random Object out of the Array is taken
+     * Compared to basic math excercises the points are doubled
+     * @param ex the Excercise.
+     * @param zahlenRaum the highest possible Number in the Math excercises
+     */
 
     private void createMal(Exercise ex, int zahlenRaum){
         int solution = getRandomNumber(1, zahlenRaum);
@@ -107,6 +142,16 @@ public class Game {
 
     }
 
+    /**
+     * Creates an division excercise
+     * Based on the zahlenRaum it defines an dividend
+     * With the dividend an Array list is build of possible divisors
+     * For defining the divisor a random Object out of the Array is taken
+     * Compared to basic math excercises the points are doubled
+     * @param ex the Excercise.
+     * @param zahlenRaum the highest possible Number in the Math excercises
+     */
+
     private void createDivision(Exercise ex, int zahlenRaum){
         int a = getRandomNumber(1, zahlenRaum);
         ArrayList<Integer> possible = new ArrayList<>();
@@ -124,9 +169,21 @@ public class Game {
         ex.setPoints(2 * settings.getMaximumPoints());
     }
 
+    /**
+     * Returns the List of Excercises
+     */
+
+
     public List<Exercise> getExerciseList() {
         return exerciseList;
     }
+
+    /**
+     * Returns an Random integer between two values
+     * @param min the minimum Number.
+     * @param max the highest possible Number
+     */
+
     private int getRandomNumber(int min, int max){
         return (new Random()).nextInt((max-min)+1)+min;
     }
