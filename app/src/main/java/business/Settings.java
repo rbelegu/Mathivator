@@ -3,8 +3,8 @@ package business;
 import java.util.List;
 
 /**
- * Class "Settings"
- * with methods
+ * Entity-Class "Settings"
+ * with Getter/Setter methods.
  *
  * @author G. Ramizi
  * @version 1.0
