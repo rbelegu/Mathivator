@@ -1,4 +1,6 @@
 package com.example.admin.mathivator;
+import android.util.Log;
+
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,39 +15,54 @@ import static org.junit.Assert.*;
  */
 
 public class GameTest {
+    int Zahlenraum = 100;
     @Test
     public void startTest(){
-        Settings s = createSettings();
-        Game g = new Game(s);
-        g.initializeGame();
-        int size = g.getExerciseList().size();
-        assertTrue(size==12);
-        Exercise e = g.getExerciseList().get(0);
-        assertTrue(e.getFirst()<101);
-        assertTrue(e.getFirst()>0);
-        assertTrue(e.getSecond()<101);
-        assertTrue(e.getSecond()>0);
-        switch(e.getOperator()){
-            case 1 : assertTrue(e.getFirst()+e.getSecond() == e.getSolution());
-                break;
-            case 2 : assertTrue(e.getFirst()-e.getSecond() == e.getSolution());
-                break;
-            case 3 : assertTrue(e.getFirst()*e.getSecond() == e.getSolution());
-                break;
-            case 4 : assertTrue(e.getFirst()/e.getSecond() == e.getSolution());
-                break;
+        for(int i = 1; i <= 10;i++) {
+            System.out.println("Start Test : " + i);
+            Settings s = createSettings();
+            Game g = new Game(s);
+            g.initializeGame();
+            int size = g.getExerciseList().size();
+            assertTrue(size == 12);
+            Exercise e = g.getExerciseList().get(0);
+
+            System.out.println("Test number range...");
+            assertTrue(e.getFirst() <= Zahlenraum);
+            assertTrue(e.getFirst() >= 0);
+            assertTrue(e.getSecond() <= Zahlenraum);
+            assertTrue(e.getSecond() >= 0);
+            System.out.println("Test operations...");
+            switch (e.getOperator()) {
+                case 1:
+                    System.out.println(e.getFirst() + " + " + e.getSecond() + " = " + e.getSolution());
+                    assertTrue(e.getFirst() + e.getSecond() == e.getSolution());
+                    break;
+                case 2:
+                    System.out.println(e.getFirst() + " - " + e.getSecond() + " = " + e.getSolution());
+                    assertTrue(e.getFirst() - e.getSecond() == e.getSolution());
+                    break;
+                case 3:
+                    System.out.println(e.getFirst() + " * " + e.getSecond() + " = " + e.getSolution());
+                    assertTrue(e.getFirst() * e.getSecond() == e.getSolution());
+                    break;
+                case 4:
+                    System.out.println(e.getFirst() + " / " + e.getSecond() + " = " + e.getSolution());
+                    assertTrue(e.getFirst() / e.getSecond() == e.getSolution());
+                    break;
+            }
         }
     }
 
     private Settings createSettings(){
         Settings s = new Settings();
         List<Integer> operators = new ArrayList<>();
-        operators.add(1);
-        operators.add(2);
-        operators.add(3);
-        operators.add(4);
+        int aOperator = (int) (4 * Math.random()) + 1;
+        System.out.println("Operator : " + aOperator);
+        operators.add(aOperator);
+
         s.setRechenOperatoren(operators);
-        s.setZahlenRaum(100);
+        s.setZahlenRaum(Zahlenraum);
         s.setHighScore(0);
         return s;
     }
