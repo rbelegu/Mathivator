@@ -38,10 +38,10 @@ import global.GlobalEvents;
 /**
  * Class GameActivity
  *
- * Sets up the Game
+ * Handles Game Start, Switch between Excercises and GPS
  *
  *
- * @author R. Belegu + D. Tsichlakis
+ * @author R. Belegu
  * @version 1.0
  */
 
@@ -68,7 +68,10 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         initialize();
     }
-
+    /**
+     * Load Settings and defines Views
+     *
+     */
     private void initialize(){
         try {
             settings = DataSettings.getSettings(this);
@@ -96,7 +99,10 @@ public class GameActivity extends AppCompatActivity {
             Log.e(LOG_TAG,"Es ist ein Fehler in der Funktion initialize Klasse GameActivity aufgetreten" + e.toString() ,e);
         }
     }
-
+    /**
+     * Sets up the timer in an Background-Thread
+     *
+     */
     private void initializeTime(){
         t = new Thread() {
 
@@ -122,7 +128,11 @@ public class GameActivity extends AppCompatActivity {
 
         t.start();
     }
-
+    /**
+     * Sets up the History and dynamically generates the
+     * Excercise Success or Fail bar
+     *
+     */
     private void createHistory(){
         history = (LinearLayout)findViewById(R.id.historyBox);
         historyList = new ArrayList<>();
@@ -144,7 +154,11 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Sets solution text
+     * @param v the actual View
+     *
+     */
 
     public void setNumber(View v){
         if(play) {
@@ -154,6 +168,12 @@ public class GameActivity extends AppCompatActivity {
             solutionView.setText(solutionText);
         }
     }
+    /**
+     * Goes Back one position Back if game is active and solution Text is bigger 1
+     * Removes the Character at last Position
+     * @param v the actual View
+     *
+     */
 
     public void onBack(View v){
         if(solutionText.length() > 0 && play){
@@ -161,6 +181,12 @@ public class GameActivity extends AppCompatActivity {
             solutionView.setText(solutionText);
         }
     }
+    /**
+     * Changes the Excercise if not the last one
+     * If its the Last Excercise it stops the game and the timer Thread
+     * @param v the actual View
+     *
+     */
 
     public void next(View v){
         if(play) {
@@ -176,6 +202,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Finish the Game and fills in HighScore Values and GPS Location
+     *
+     */
     private void finishGame(){
         Highscore highscore = new Highscore();
         highscore.setHighscore(currentPoints);
@@ -190,7 +220,12 @@ public class GameActivity extends AppCompatActivity {
         DataHighscore.insertHigscore(highscore,this);
 
     }
-/* Read the GPS location and return the City */
+
+    /**
+     * Read the GPS location and return the City
+     *
+     */
+
     private String getLocation(){
         String finalCity = null;
         LocationManager locationManager =(LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
@@ -223,6 +258,13 @@ public class GameActivity extends AppCompatActivity {
             return null;
         }
     }
+    /**
+     * Checks the Solution and updates the dynamically created success bar
+     * if the Solution is correct the Backgroundcolor is changed to green
+     * otherwise its changed to red
+     * If correct it also adds the Points to the current amount of Points
+     *
+     */
 
     private void checkSolution(){
         if(!solutionText.isEmpty()) {
@@ -237,6 +279,10 @@ public class GameActivity extends AppCompatActivity {
             currentExerciseIndex++;
         }
     }
+    /**
+     * Builds the Display of the Excercise based on the Operator
+     *
+     */
 
     private void setExercise(){
         Exercise exercise = game.getExerciseList().get(currentExerciseIndex);
@@ -257,9 +303,7 @@ public class GameActivity extends AppCompatActivity {
         solutionView.setText("");
         solutionText="";
     }
-    /**
-     * Read the display size and change the size of the digit block buttons
-     */
+    
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
