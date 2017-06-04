@@ -20,10 +20,11 @@ import static org.junit.Assert.*;
  * @version 1.0
  */
 public class GameTest {
-    int Zahlenraum = 100;
+    private int Zahlenraum = 10;    //<-- Define Zahlenraum
     @Test
     public void startTest(){
-        for(int i = 1; i <= 10;i++) {
+        System.out.println("Zahlenraum = " + Zahlenraum + "\n");
+        for(int i = 1; i <= 100;i++) {
             System.out.println("Start Test : " + i);
             Settings s = createSettings();
             Game g = new Game(s);
@@ -32,12 +33,12 @@ public class GameTest {
             assertTrue(size == 12);
             Exercise e = g.getExerciseList().get(0);
 
-            System.out.println("Test number range...");
             assertTrue(e.getFirst() <= Zahlenraum);
             assertTrue(e.getFirst() >= 0);
             assertTrue(e.getSecond() <= Zahlenraum);
             assertTrue(e.getSecond() >= 0);
-            System.out.println("Test operations...");
+            assertTrue(e.getSolution() <= Zahlenraum);
+            assertTrue(e.getSolution() >= 0);
             switch (e.getOperator()) {
                 case 1:
                     System.out.println(e.getFirst() + " + " + e.getSecond() + " = " + e.getSolution());
@@ -56,6 +57,7 @@ public class GameTest {
                     assertTrue(e.getFirst() / e.getSecond() == e.getSolution());
                     break;
             }
+            System.out.println("------------------------------------------");
         }
     }
 
@@ -63,7 +65,6 @@ public class GameTest {
         Settings s = new Settings();
         List<Integer> operators = new ArrayList<>();
         int aOperator = (int) (4 * Math.random()) + 1;
-        System.out.println("Operator : " + aOperator);
         operators.add(aOperator);
 
         s.setRechenOperatoren(operators);
